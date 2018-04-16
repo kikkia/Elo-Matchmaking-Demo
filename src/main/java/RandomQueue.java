@@ -2,6 +2,7 @@ import Models.Match;
 import Models.Player;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
@@ -29,6 +30,7 @@ public class RandomQueue {
     public void match() {
         List<Match> matchList = new ArrayList<>();
         List<Player> tempPL = getCopyOfPlayers();
+        Collections.shuffle(tempPL);
 
         for (int i = playerList.size()/2; i > 0; i--) {
             Player p2 = tempPL.get(random.nextInt(tempPL.size()));

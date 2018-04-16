@@ -40,19 +40,19 @@ public class LineChart extends JFrame {
         for (Match m : matches) {
             int p1Skill = m.getPlayer1().getSkill();
             int p2Skill = m.getPlayer2().getSkill();
-            if (totals.get(p1Skill) == null)
+            if (totals.get(p1Skill) == null && m.getRound() > 1000)
                 totals.put(p1Skill, m.getQaulity());
-            else
+            else if (m.getRound() > 1000)
                 totals.put(p1Skill, totals.get(p1Skill) + m.getQaulity());
 
-            if (totals.get(p2Skill) == null)
+            if (totals.get(p2Skill) == null && m.getRound() > 1000)
                 totals.put(p2Skill, m.getQaulity());
-            else
+            else if (m.getRound() > 1000)
                 totals.put(p2Skill, totals.get(p2Skill) + m.getQaulity());
         }
 
         for (Map.Entry<Integer, Double> e : totals.entrySet()) {
-            double avg = e.getValue() / 2000.0;
+            double avg = e.getValue() / 1000.0;
             quality.add((int) e.getKey(), avg);
         }
 
